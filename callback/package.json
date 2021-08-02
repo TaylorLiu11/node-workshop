@@ -1,0 +1,16 @@
+{
+  "name": "callback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "callback1.js",
+  "dependencies": {
+    "tailwindcss": "^2.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build:css": "tailwind build -i src/style.css -o style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
