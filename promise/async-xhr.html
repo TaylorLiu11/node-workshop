@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async-xhr</title>
+    <link rel="stylesheet" href="../callback/style.css">
+</head>
+
+<body class="bg-purple-400 flex items-center justify-center min-h-screen">
+    <div id="container">
+    </div>
+    <button id="button"
+        class="btn bg-gray-600 shadow-2xl transform transition-all duration-150 ease-in-out hover:scale-105 hover:shadow-lg active:translate-y-0.5 fixed bottom-10">
+        Get Photo
+    </button>
+
+
+    <script>
+        document.getElementById('button').addEventListener('click', async () => {
+            await getPhoto('https://source.unsplash.com/collection/4691442/1600x900');
+        })
+
+        function getPhoto(url) {
+            return new Promise((res, rej) => {
+                let xhr = new XMLHttpRequest();
+
+                // Method, Url, Async (default: true)
+                xhr.open("GET", url, true);
+                xhr.onload = function () {
+                    if (this.status === 200) {
+                        // Success
+                        document.getElementById('container').innerHTML += `<div class="bg-gray-200 p-3 rounded-md my-3">
+                                                                                <img class="w-96 h-56" src="${this.responseURL}" alt="Photo">
+                                                                            </div>`;
+
+                    } else {
+                        // Fail
+                        console.log('Something went wrong:((');
+
+                    }
+                }
+                xhr.onerror = () => console.log('Something went wrong:((');
+                xhr.send()
+            })
+        }
+
+    </script>
+</body>
+
+</html>

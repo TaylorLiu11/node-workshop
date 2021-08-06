@@ -1,4 +1,6 @@
 const btn = document.getElementById('button');
+const errMessage = document.getElementById('alert');
+const errorMessage = document.getElementById('errorMessage');
 
 // Color variables
 let pink = 'bg-pink-500';
@@ -20,7 +22,7 @@ const changeColor = (currentColor, newColor, timer, error = false) => {
             if (!error) {
                 res();
             } else {
-                rej('Something went wrong!');
+                rej('Something went wrong:((');
             }
         }, timer);
     });
@@ -39,7 +41,7 @@ function pressButton() {
             return changeColor(pink, red, 500);
         })
         .then((res) => {
-            return changeColor(red, orange, 300, true);
+            return changeColor(red, orange, 300);
         })
         .then((res) => {
             return changeColor(orange, yellow, 500);
@@ -57,7 +59,9 @@ function pressButton() {
             return changeColor(purple, gray, 700);
         })
         .catch((res) => {
-            console.log('Something wrong:((');
+            errorMessage.innerHTML = res;
+            errMessage.classList.remove('hidden');
+            btn.classList.add('hidden');
         })
         .finally((res) => {
             console.log('Finally!');
@@ -68,6 +72,51 @@ function pressButton() {
     btn.classList.add('hover:shadow-lg');
     btn.classList.remove('cursor-not-allowed');
 }
+
+// function pressButton() {
+//     // Set button to be disabled
+//     btn.disabled = true;
+//     btn.classList.remove('hover:scale-105');
+//     btn.classList.remove('hover:shadow-lg');
+//     btn.classList.add('cursor-not-allowed');
+
+//     let changeColor1 = changeColor(gray, pink, 1000);
+//     changeColor1
+//         .then((res) => {
+//             return changeColor(pink, red, 500);
+//         })
+//         .then((res) => {
+//             return changeColor(red, orange, 300, true);
+//         })
+//         .then((res) => {
+//             return changeColor(orange, yellow, 500);
+//         })
+//         .then((res) => {
+//             return changeColor(yellow, green, 1300);
+//         })
+//         .then((res) => {
+//             return changeColor(green, blue, 1500);
+//         })
+//         .then((res) => {
+//             return changeColor(blue, purple, 200);
+//         })
+//         .then((res) => {
+//             return changeColor(purple, gray, 700);
+//         })
+//         .catch((res) => {
+//             errorMessage.innerHTML = res;
+//             errMessage.classList.remove('hidden');
+//             btn.classList.add('hidden');
+//         })
+//         .finally((res) => {
+//             console.log('Finally!');
+//         });
+
+//     btn.disabled = false;
+//     btn.classList.add('hover:scale-105');
+//     btn.classList.add('hover:shadow-lg');
+//     btn.classList.remove('cursor-not-allowed');
+// }
 
 btn.addEventListener('click', pressButton);
 
