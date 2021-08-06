@@ -11,18 +11,16 @@ let purple = 'bg-purple-500';
 let gray = 'bg-gray-500';
 
 // ChangeColor function
-const changeColor = (currentColor, newColor, timer) => {
+const changeColor = (currentColor, newColor, timer, error = false) => {
     return new Promise((res, rej) => {
         setTimeout(function () {
             document.body.classList.remove(currentColor);
             document.body.classList.add(newColor);
 
-            let error = false;
             if (!error) {
                 res();
             } else {
                 rej('Something went wrong!');
-                return error = true;
             }
         }, timer);
     });
@@ -41,7 +39,7 @@ function pressButton() {
             return changeColor(pink, red, 500);
         })
         .then((res) => {
-            return changeColor(red, orange, 300);
+            return changeColor(red, orange, 300, true);
         })
         .then((res) => {
             return changeColor(orange, yellow, 500);
