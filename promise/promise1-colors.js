@@ -65,12 +65,11 @@ function pressButton() {
         })
         .finally((res) => {
             console.log('Finally!');
+            btn.disabled = false;
+            btn.classList.add('hover:scale-105');
+            btn.classList.add('hover:shadow-lg');
+            btn.classList.remove('cursor-not-allowed');
         });
-
-    btn.disabled = false;
-    btn.classList.add('hover:scale-105');
-    btn.classList.add('hover:shadow-lg');
-    btn.classList.remove('cursor-not-allowed');
 }
 
 // function pressButton() {
@@ -110,12 +109,11 @@ function pressButton() {
 //         })
 //         .finally((res) => {
 //             console.log('Finally!');
-//         });
-
-//     btn.disabled = false;
-//     btn.classList.add('hover:scale-105');
-//     btn.classList.add('hover:shadow-lg');
-//     btn.classList.remove('cursor-not-allowed');
+//             btn.disabled = false;
+//             btn.classList.add('hover:scale-105');
+//             btn.classList.add('hover:shadow-lg');
+//             btn.classList.remove('cursor-not-allowed');
+//          });
 // }
 
 btn.addEventListener('click', pressButton);
