@@ -8,4 +8,4 @@ axios.get('https://www.twse.com.tw/exchangeReport/STOCK_DAY', {
         stockNo: 2330,
     }
 })
-    .then(res => console.log(res));
+    .then(res => console.log(res.data));
