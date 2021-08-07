@@ -10,7 +10,7 @@ new Promise((res, rej) => {
             // res(stockCode.trim());
 
             // To remove all non-numeric characters
-            res(stockCode.trim().replace(/\D/g, ''));
+            res(stockCode.replace(/\D/g, ''));
         }
     });
 })

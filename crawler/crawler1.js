@@ -7,7 +7,7 @@ fs.readFile("stock.txt", "utf8", (err, stockCode) => {
         params: {
             response: 'json',
             date: moment().format('YYYYMMDD'),
-            stockNo: stockCode.trim().replace(/\D/g, ''),
+            stockNo: stockCode.replace(/\D/g, ''),
         }
     })
         .then(res => console.log(res.data.title))
