@@ -11,6 +11,5 @@ fs.readFile("stock.txt", "utf8", (err, stockCode) => {
         console.log(err);
     } else {
         console.log(stockCode.trim());
-        // Trim "stock.txt" to make it one line as we want it to be
     }
 });
