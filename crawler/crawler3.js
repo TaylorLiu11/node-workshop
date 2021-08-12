@@ -11,7 +11,8 @@ const fs = require("fs");
                 // res(stockCode.trim());
 
                 // To remove all non-numeric characters
-                res(stockCode.trim().replace(/\D/g, ''));
+                res(stockCode.replace(/\D/g, ''));
+
                 // console.log(stockCode.trim().replace(/\D/g, ''));
             }
         });
